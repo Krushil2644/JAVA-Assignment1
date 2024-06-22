@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Import necessary JavaFX components -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Define the root layout, set alignment and spacing -->
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.assignment1.MainController">
+
+  <!-- Set padding for the VBox -->
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+  </padding>
+
+  <!-- Label for the title of the application -->
+  <Label text="Deforestation Analyzer" styleClass="chart-title"/>
+
+  <!-- Button to toggle between table view and chart view -->
+  <Button fx:id="toggleButton" text="Show Table View" onAction="#toggleTableViewAndChartView"/>
+
+  <!-- BorderPane to organize the layout -->
+  <BorderPane>
+    <center>
+      <!-- VBox to hold the TableView and BarChart -->
+      <VBox spacing="10">
+
+        <!-- TableView for displaying data, initially hidden -->
+        <TableView fx:id="tableView" visible="false">
+          <columns>
+            <!-- ID Column -->
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50">
+              <cellValueFactory>
+                <PropertyValueFactory property="id"/>
+              </cellValueFactory>
+            </TableColumn>
+            <!-- Year Column -->
+            <TableColumn fx:id="yearColumn" text="Year" prefWidth="100">
+              <cellValueFactory>
+                <PropertyValueFactory property="year"/>
+              </cellValueFactory>
+            </TableColumn>
+            <!-- Area Affected Column -->
+            <TableColumn fx:id="areaAffectedColumn" text="Area Affected" prefWidth="150">
+              <cellValueFactory>
+                <PropertyValueFactory property="areaAffected"/>
+              </cellValueFactory>
+            </TableColumn>
+            <!-- Cause Column -->
+            <TableColumn fx:id="causeColumn" text="Cause" prefWidth="150">
+              <cellValueFactory>
+                <PropertyValueFactory property="cause"/>
+              </cellValueFactory>
+            </TableColumn>
+            <!-- Description Column -->
+            <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="250">
+              <cellValueFactory>
+                <PropertyValueFactory property="description"/>
+              </cellValueFactory>
+            </TableColumn>
+          </columns>
+        </TableView>
+
+        <!-- BarChart for displaying data graphically -->
+        <BarChart fx:id="barChart" prefHeight="400.0" prefWidth="600.0">
+          <!-- X Axis for the BarChart -->
+          <xAxis>
+            <CategoryAxis fx:id="xAxis" label="Year"/>
+          </xAxis>
+          <!-- Y Axis for the BarChart -->
+          <yAxis>
+            <NumberAxis fx:id="yAxis" label="Area Affected (sq km)"/>
+          </yAxis>
+        </BarChart>
+
+      </VBox>
+    </center>
+  </BorderPane>
+</VBox>
